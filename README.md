@@ -98,11 +98,26 @@ Once the server is restarted, SSO should be enabled.
 </script>
 ```
 
-Users are resolved by email address and if no user can be found with an email
-address that matches one passed in `flarum.signin()` then a new one will be
+Users are resolved by email address. If no user can be found with an email
+address that matches one passed in `flarum.signin()` then a new user will be
 created.
 
 This means that if the user updates their email address in your main
-application the update should be passed to `flarum.updateUserEmail()`.
-Otherwise, when the user next visits the Flarum site they will have a new
-account created for them.
+application this update should also be passed to Flarum. Otherwise, when the
+user next visits the Flarum site a new account created for them (using their
+new email address). Here's an example of a function that can be used to
+update a current user's email address:
+
+``` js
+updateEmail(oldEmail, newEmail) {
+  return this.$flarum.getUserByEmail(oldEmail).then(flarumUser => {
+    if (flarumUser) {
+      this.$flarum.updateUser(flarumUser.id, {
+        email: newEmail
+      })
+    }
+  }).catch(err => {
+    this.$nuxt.error(err)
+  })
+}
+```
