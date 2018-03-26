@@ -76,11 +76,6 @@ Once the server is restarted, SSO should be enabled.
 </template>
 
 <script>
-  import Vue from 'vue'
-  import VueConfetti from 'vue-confetti'
-
-  Vue.use(VueConfetti)
-
   export default {
     data: {
       username: null,
