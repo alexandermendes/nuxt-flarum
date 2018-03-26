@@ -13,6 +13,11 @@ class Flarum {
     this.sessionCookieDomain = options.sessionCookieDomain
     this.disableEmailConfirmation = options.disableEmailConfirmation
     this.client = this.createAxiosClient()
+    this.cookieOptions = {
+      domain: this.sessionCookieDomain,
+      expires: 365,
+      secure: this.secure
+    }
   }
 
   /**
@@ -90,7 +95,7 @@ class Flarum {
    * Sign the current user out.
    */
   signout () {
-    JSCookie.remove(this.remember_me_key)
+    JSCookie.remove(this.remember_me_key, this.cookieOptions)
   }
 
   /**
@@ -180,15 +185,13 @@ class Flarum {
    *   The Flarum token.
    */
   setCookie (token) {
-    JSCookie.set(this.rememberMeKey, token, {
-      domain: this.sessionCookieDomain,
-      expires: 365,
-      secure: this.secure
-    })
+    this.signout() // In case already signed in with another account
+
+    JSCookie.set(this.rememberMeKey, token, this.cookieOptions)
 
     if (this.debug) {
       // eslint-disable-next-line no-console
-      console.log('Cookies updated:', document.cookie)
+      console.log('Cookies updated for', this.sessionCookieDomain)
     }
   }
 
