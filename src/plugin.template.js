@@ -11,6 +11,7 @@ class Flarum {
     this.debug = options.debug
     this.secure = options.secure
     this.sessionCookieDomain = options.sessionCookieDomain
+    this.disableEmailConfirmation = options.disableEmailConfirmation
     this.client = this.createAxiosClient()
   }
 
@@ -23,6 +24,15 @@ class Flarum {
    */
   signin (username, email) {
     const password = this.createPassword(username)
+    const settings = {
+      password: password,
+      username: username
+    }
+
+    // Activate all accounts by default
+    if (this.disableEmailConfirmation) {
+      settings.isActivated = true
+    }
 
     return new Promise((resolve, reject) => {
       return this.getUserByEmail(email).then(user => {
@@ -33,8 +43,8 @@ class Flarum {
           return user
         }
       }).then(user => {
-        // Ensure that the username and password are consistent
-        this.updateUser(user.id, { password: password, username: username })
+        // Ensure that the user settings are consistent
+        this.updateUser(user.id, settings)
       }).then(user => {
         return this.getToken(username, password)
       }).then(token => {
