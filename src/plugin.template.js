@@ -177,6 +177,7 @@ class Flarum {
     })
 
     if (this.debug) {
+      // eslint-disable-next-line no-console
       console.log('Cookies updated:', document.cookie)
     }
   }
@@ -215,6 +216,7 @@ class Flarum {
     // Enable response debugger
     if (this.debug) {
       instance.interceptors.response.use(resp => {
+        // eslint-disable-next-line no-console
         console.log('Response:', resp)
         return resp
       })
