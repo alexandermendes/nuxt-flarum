@@ -1,5 +1,7 @@
 # nuxt-flarum
 
+[![npm version](https://badge.fury.io/js/nuxt-flarum.svg)](https://badge.fury.io/js/nuxt-flarum)
+
 A Nuxt module for Flarum SSO.
 
 ## Setup
