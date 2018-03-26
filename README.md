@@ -1,6 +1,6 @@
 # nuxt-flarum
 
-A Nuxt module for Flarum SSO
+A Nuxt module for Flarum SSO.
 
 ## Setup
 
@@ -31,7 +31,7 @@ module.exports = {
 }
 ```
 
-## Configure Flarum
+### Configure Flarum
 
 Create a random token and put it in the `api_keys` table of your Flarum
 database.
@@ -61,3 +61,51 @@ RewriteRule ^(.*)$ $1 [R=200,L]
 ```
 
 Once the server is restarted, SSO should be enabled.
+
+## Usage
+
+```
+<template>
+  <main>
+    <input v-model="username">
+    <input v-model="email">
+    <input v-model="password">
+    <button @click="signin">Signin</button>
+    <button @click="signout">Signout</button>
+  </main>
+</template>
+
+<script>
+  import Vue from 'vue'
+  import VueConfetti from 'vue-confetti'
+
+  Vue.use(VueConfetti)
+
+  export default {
+    data: {
+      username: null,
+      email: null,
+      password: null
+    },
+
+    methods: {
+      signin () {
+        this.$flarum.signin(this.username, this.email)
+      },
+
+      signout () {
+        this.$flarum.signout()
+      }
+    }
+  }
+</script>
+```
+
+Users are resolved by email address and if no user can be found with an email
+address that matches one passed in `flarum.signin()` then a new one will be
+created.
+
+This means that if the user updates their email address in your main
+application the update should be passed to `flarum.updateUserEmail()`.
+Otherwise, when the user next visits the Flarum site they will have a new
+account created for them.
