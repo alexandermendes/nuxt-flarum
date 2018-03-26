@@ -243,7 +243,8 @@ export default (ctx, inject) => {
     sessionCookieDomain: '<%= options.sessionCookieDomain %>',
     salt: '<%= options.salt %>',
     debug: '<%= options.debug %>',
-    secure: '<%= options.secure %>'
+    secure: '<%= options.secure %>',
+    disableEmailConfirmation: '<%= options.disableEmailConfirmation %>'
   }
 
   // Create a new Flarum instance
