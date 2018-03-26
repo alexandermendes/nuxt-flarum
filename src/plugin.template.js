@@ -117,7 +117,7 @@ class Flarum {
   }
 
   /**
-   * Update a user by name.
+   * Update a user by ID.
    * @param {String} userId
    *   The user's ID.
    * @param {Object} attributes
