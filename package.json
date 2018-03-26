@@ -1,6 +1,6 @@
 {
   "name": "nuxt-flarum",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Nuxt module for Flarum integration",
   "main": "src/module.js",
   "scripts": {
