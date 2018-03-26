@@ -2,7 +2,7 @@
   "name": "nuxt-flarum",
   "version": "1.0.0",
   "description": "A Nuxt module for Flarum integration",
-  "main": "lib/module.js",
+  "main": "src/module.js",
   "scripts": {
     "lint": "eslint src",
     "test": "npm run lint"
