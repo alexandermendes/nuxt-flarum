@@ -16,6 +16,9 @@
     "flarum",
     "sso"
   ],
+  "files": [
+    "src"
+  ],
   "author": "Alexander Mendes",
   "license": "MIT",
   "bugs": {
