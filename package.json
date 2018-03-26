@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-flarum",
+  "version": "1.0.0",
+  "description": "A Nuxt module for Flarum integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandermendes/nuxt-flarum.git"
+  },
+  "keywords": [
+    "nuxt",
+    "flarum",
+    "sso"
+  ],
+  "author": "Alexander Mendes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexandermendes/nuxt-flarum/issues"
+  },
+  "homepage": "https://github.com/alexandermendes/nuxt-flarum#readme"
+}
