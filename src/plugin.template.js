@@ -92,13 +92,6 @@ class Flarum {
   }
 
   /**
-   * Sign the current user out.
-   */
-  signout () {
-    JSCookie.remove(this.remember_me_key, this.cookieOptions)
-  }
-
-  /**
    * Create an encrypted password.
    * @param {String} username
    *   The user's name.
@@ -191,7 +184,19 @@ class Flarum {
 
     if (this.debug) {
       // eslint-disable-next-line no-console
-      console.log('Cookies updated for', this.sessionCookieDomain)
+      console.log('Cookie updated:', Cookies.get(this.rememberMeKey))
+    }
+  }
+
+  /**
+   * Sign the current user out.
+   */
+  signout () {
+    JSCookie.remove(this.remember_me_key, this.cookieOptions)
+
+    if (this.debug) {
+      // eslint-disable-next-line no-console
+      console.log('Cookie updated:', Cookies.get(this.rememberMeKey))
     }
   }
 
