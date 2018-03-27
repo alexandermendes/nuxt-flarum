@@ -49,7 +49,14 @@ class Flarum {
         }
       }).then(user => {
         // Ensure that the user settings are consistent
-        this.updateUser(user.id, settings)
+        const needsUpdate = !Object.keys(settings).every(key => {
+          return settings[key] === user.attributes[key]
+        })
+        if (needsUpdate) {
+          return this.updateUser(user.id, settings)
+        } else {
+          return user
+        }
       }).then(user => {
         return this.getToken(username, password)
       }).then(token => {
