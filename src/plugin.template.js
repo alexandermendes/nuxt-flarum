@@ -184,7 +184,7 @@ class Flarum {
 
     if (this.debug) {
       // eslint-disable-next-line no-console
-      console.log('Cookie updated:', Cookies.get(this.rememberMeKey))
+      console.log('Cookie updated:', JSCookie.get(this.rememberMeKey))
     }
   }
 
@@ -196,7 +196,7 @@ class Flarum {
 
     if (this.debug) {
       // eslint-disable-next-line no-console
-      console.log('Cookie updated:', Cookies.get(this.rememberMeKey))
+      console.log('Cookie updated:', JSCookie.get(this.rememberMeKey))
     }
   }
 
